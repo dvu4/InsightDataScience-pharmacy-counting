@@ -3,7 +3,7 @@
 * [Input Dataset](#input-dataset)
 * [Output](#output)
 * [Repo Directory Structure](#repo-directory-structure)
-# [Code structure](#code-structure)
+* [Code structure](#code-structure)
 * [Setup](#setup)
 
 
