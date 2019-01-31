@@ -169,5 +169,4 @@ if you are able to use `Python3`.
 
 # Notebook
 
-You can have a look at [Notebook](https://github.com/dvu4/InsightDataScience-pharmacy_counting/blob/master/pharmacy_counting_notebook.ipynb) for more detail.
-
+For more detail, you can have a look at [Notebook](https://github.com/dvu4/InsightDataScience-pharmacy_counting/blob/master/pharmacy_counting_notebook.ipynb).
