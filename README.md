@@ -1,9 +1,9 @@
 # Table of contents
 * [General info](#general-info)
-* [Input Dataset](#input Dataset)
+* [Input Dataset](#input-dataset)
 * [Output](#output)
-* [Repo Directory Structure](#repo directory structure)
-# [Code structure](#code structure)
+* [Repo Directory Structure](#repo-directory-structure)
+# [Code structure](#code-structure)
 * [Setup](#setup)
 
 
