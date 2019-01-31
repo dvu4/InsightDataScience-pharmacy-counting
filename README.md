@@ -88,9 +88,9 @@ To install python:
 
 To check if input file exists:
 
-- `import os`
+`import os`
 
-- `import sys`
+`import sys`
 
 
 # Code Description
