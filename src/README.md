@@ -1,4 +1,17 @@
-This is the directory where your source code would reside.
+# Table of contents
+* [General info](#general-info)
+* [Input Dataset](#input-dataset)
+* [Output](#output)
+* [Repo Directory Structure](#repo-directory-structure)
+* [Code Description](#code-description)
+* [Setup](#setup)
+* [Notebook](#notebook)
+
+
+
+# General info
+
+The goal of the project is to generate a list of all drugs, the total number of UNIQUE individuals who prescribed the medication, and the total drug cost, which must be listed in descending order based on the total drug cost and if there is a tie, drug name in ascending order.
 
 
 # Input Dataset
@@ -17,7 +30,7 @@ Each line of this file contains these fields:
 
 For example
 
-If your input data, **`itcont.txt`**, is
+The input data, **`itcont.txt`**, is
 ```
 id,prescriber_last_name,prescriber_first_name,drug_name,drug_cost
 1000000001,Smith,James,AMBIEN,100
@@ -38,14 +51,14 @@ AMBIEN,2,300
 These files are provided in the `insight_testsuite/tests/test_1/input` and `insight_testsuite/tests/test_1/output` folders, respectively.
 
 
-# Directory structure
+# Repo Directory Structure
 
-The directory structure for your repo should look like this:
+The directory structure for the repo is organized :
 
     ├── README.md 
     ├── run.sh
-    ├── notebook 
-    │   └── pharmacy_counting_notebook.ipynb 
+    ├── pharmacy_counting_notebook.ipynb 
+    │   
     ├── src
     │   └── pharmacy-counting.py
     ├── input
@@ -67,16 +80,49 @@ The directory structure for your repo should look like this:
                     └── top_cost_drug.txt
 
 
-# Code structure
+# Setup
 
-## 1.`record_drugs` groups the prescription drugs
+To install python:
+
+`pip install python`  
+
+To check if input file exists:
+
+`import os`
+
+`import sys`
+
+
+# Code Description
+
+### 1. The function `record_drugs` groups the prescription drugs
 
 - group the prescription drugs by drug name
 
 - record them in bag_of_drugs dictionary.
 
 
-## 2.`count_drugs` extract the drug name, number of prescriber, total cost
+```
+def record_drugs(line, bag_of_drugs):  
+    """Group the information on prescription drugs by drug name and record them in bag_of_drugs dictionary.       
+    Params
+    ======
+        line (list): containing id, prescriber_last_name, prescriber_first_name, drug_name, drug_cost
+        bag_of_drugs (dictionary): dictionary of drugs 
+    """
+    # get drug_name 
+    drug_name = line[3]
+    if drug_name != '':
+        # group by drug_name
+        if drug_name in bag_of_drugs:
+            bag_of_drugs[drug_name].append(line) 
+        else:
+            bag_of_drugs[drug_name] = []
+            bag_of_drugs[drug_name].append(line) 
+```
+
+
+### 2. The function `count_drugs` extracts the drug name, number of prescriber, total cost
 
 - obtain a list ot tuples in (drug_name, num_prescriber, total_cost) format,
 
@@ -84,7 +130,43 @@ The directory structure for your repo should look like this:
 
 - sort the list by total drug cost in descending order.
 
+```
+def count_drugs(bag_of_drugs, drugs_result):
+    """Return a list ot tuples in (drug_name, num_prescriber, total_cost) format, sorted by total drug cost and drug name.     
+    Params
+    ======
+        bag_of_drugs (dictionary): dictionary of drugs 
+        drugs_result (list of tuples) : list ot tuples (drug_name, num_prescriber, total_cost)
+    """   
+    for drug_name, values in bag_of_drugs.items():
+        # get the list of last_name and fist_name of all prescribers
+        list_prescriber = [ tuple([ i[1].lower(), i[2].lower() ]) for i in values ]
+        # count the number of unique prescribers who prescribe the drug
+        num_prescriber = len(set(list_prescriber))
+        # get the total cost of the drug across all prescribers
+        total_cost = sum([ int(float(i[-1])) for i in values ])
+        # create a list of all drugs, the total number of UNIQUE prescribers, and the total drug cost
+        drugs_result.append(tuple([drug_name, num_prescriber, total_cost]))
+        
+    #sort the drug name in ascending order
+    drugs_result.sort(key=lambda x: x[0], reverse=False)
+    
+    #sort the total drug cost in descending order 
+    drugs_result.sort(key=lambda x: x[2], reverse=True)
+```
 
-To run the code, 
-`import os`
-`import sys`
+# Execution
+
+`bash run.sh`
+
+The `run.sh` script contains 
+
+- `python ./src/pharmacy_counting.py ./input/itcont.txt ./output/top_cost_drug.txt` 
+
+if you are able to use `Python3`.
+- `python3 ./src/pharmacy_counting.py ./input/itcont.txt ./output/top_cost_drug.txt` 
+
+
+# Notebook
+
+For more detail, you can have a look at [Notebook](https://github.com/dvu4/InsightDataScience-pharmacy_counting/blob/master/pharmacy_counting_notebook.ipynb).
