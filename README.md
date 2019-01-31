@@ -6,6 +6,7 @@
 * [Code structure](#code-structure)
 * [Setup](#setup)
 
+You can have a look at [Notebook](#pharmacy_counting_notebook.ipynb) for more detail.
 
 # General info
 
@@ -86,11 +87,12 @@ To install python:
 
 To check if input file exists:
 
-`import os`
-`import sys`
+- `import os`
+
+- `import sys`
 
 
-# Code structure
+# Code Description
 
 ### 1. The function `record_drugs` groups the prescription drugs
 
@@ -163,3 +165,5 @@ The `run.sh` script contains
 if you are able to use `Python3`.
 - `python3 ./src/pharmacy_counting.py ./input/itcont.txt ./output/top_cost_drug.txt` 
 
+
+For more detail, you can have a look at [Notebook](#pharmacy_counting_notebook.ipynb) .
