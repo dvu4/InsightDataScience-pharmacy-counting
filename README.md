@@ -5,8 +5,9 @@
 * [Repo Directory Structure](#repo-directory-structure)
 * [Code Description](#code-description)
 * [Setup](#setup)
+* [Notebook](#notebook)
 
-You can have a look at [Notebook](#pharmacy_counting_notebook.ipynb) for more detail.
+
 
 # General info
 
@@ -166,5 +167,7 @@ if you are able to use `Python3`.
 - `python3 ./src/pharmacy_counting.py ./input/itcont.txt ./output/top_cost_drug.txt` 
 
 
-For more detail, you can have a look at [Notebook](#pharmacy_counting_notebook.ipynb) .
+# Notebook
+
+You can have a look at [Notebook](https://raw.githubusercontent.com/dvu4/InsightDataScience-pharmacy_counting/master/pharmacy_counting_notebook.ipynb?token=ALBmHH6rahuN9BqdBJB1VoRBSPPA8eKSks5cUqK2wA%3D%3D) for more detail.
 
