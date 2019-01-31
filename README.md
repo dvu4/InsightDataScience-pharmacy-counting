@@ -3,7 +3,7 @@
 * [Input Dataset](#input-dataset)
 * [Output](#output)
 * [Repo Directory Structure](#repo-directory-structure)
-* [Code structure](#code-structure)
+* [Code Description](#code-description)
 * [Setup](#setup)
 
 You can have a look at [Notebook](#pharmacy_counting_notebook.ipynb) for more detail.
@@ -167,3 +167,4 @@ if you are able to use `Python3`.
 
 
 For more detail, you can have a look at [Notebook](#pharmacy_counting_notebook.ipynb) .
+
